@@ -22,6 +22,6 @@ jobs:
 
       - name: 🚀 Deploy
         run: |
-          cd ~/my-app
+          cd ~/my-one
           git pull origin main
           docker compose up --build -d
