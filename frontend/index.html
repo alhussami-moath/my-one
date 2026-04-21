@@ -11,14 +11,14 @@
   </style>
 </head>
 <body>
-  <h1>🐳 My First Docker App</h1>
+  <h1>🐳 My First one Docker App</h1>
   <button onclick="fetchMessage()">Call Backend API</button>
   <div id="result">Press the button!</div>
 
   <script>
     async function fetchMessage() {
       try {
-        const res = await fetch('http://localhost:3000/api/hello');
+        const res = await fetch('http://10.10.1.12:3000/api/hello');
         const data = await res.json();
         document.getElementById('result').innerText = data.message;
       } catch (err) {

@@ -1,0 +1,27 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: ✅ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔨 Build Backend Image
+        run: docker build -t my-backend ./backend
+
+      - name: 🔨 Build Frontend Image
+        run: docker build -t my-frontend ./frontend
+
+      - name: 🚀 Deploy
+        run: |
+          cd ~/my-app
+          git pull origin main
+          docker compose up --build -d
