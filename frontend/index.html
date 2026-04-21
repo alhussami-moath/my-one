@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My App</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f0f4f8; }
+    h1 { color: #333; }
+    #result { margin-top: 20px; font-size: 1.3rem; color: #0077cc; }
+    button { padding: 10px 24px; font-size: 1rem; cursor: pointer; border-radius: 6px; border: none; background: #0077cc; color: white; }
+  </style>
+</head>
+<body>
+  <h1>🐳 My First Docker App</h1>
+  <button onclick="fetchMessage()">Call Backend API</button>
+  <div id="result">Press the button!</div>
+
+  <script>
+    async function fetchMessage() {
+      try {
+        const res = await fetch('http://localhost:3000/api/hello');
+        const data = await res.json();
+        document.getElementById('result').innerText = data.message;
+      } catch (err) {
+        document.getElementById('result').innerText = 'Error connecting to backend ❌';
+      }
+    }
+  </script>
+</body>
+</html>
